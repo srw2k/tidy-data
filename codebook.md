@@ -6,7 +6,7 @@ This markdown document describes the file "HAR_dataset_extracted_stats.txt" that
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-This zip file includes a code book of sorts, i.e., information on the data from the entire data set, named "features_info.txt"", the contents of which are in the following box, below which I will describe the data I extracted:
+This zip file includes a code book of sorts, i.e., information on the data from the entire data set, named "features_info.txt", the contents of which are in the following box, below which I will describe the data I extracted:
 
 ```html
 Feature Selection 
