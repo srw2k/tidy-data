@@ -12,15 +12,15 @@ features <- read.table("./UCI HAR Dataset/features.txt")
 valid_column_names <- make.names(names=features[,2], unique=TRUE)
 valid_column_names[556] <- "angle.tBodyAccJerkMean.gravityMean." #corrects typo in features.txt
 
-subject_test <- rename(subject_test, subject = V1)
-subject_train <- rename(subject_train, subject = V1)
-y_test <- rename(y_test, activity = V1)
-y_train <- rename(y_train, activity = V1)
-
 colnames(X_test) <- valid_column_names
 X_test <- select(X_test, contains("mean.."), contains("std.."))
 colnames(X_train) <- valid_column_names
 X_train <- select(X_train, contains("mean.."), contains("std.."))
+
+subject_test <- rename(subject_test, subject = V1)
+subject_train <- rename(subject_train, subject = V1)
+y_test <- rename(y_test, activity = V1)
+y_train <- rename(y_train, activity = V1)
 
 testDF <- cbind(subject_test, y_test, X_test)
 trainDF <- cbind(subject_train, y_train, X_train)
@@ -34,3 +34,5 @@ finalDF$activity[finalDF$activity == 5] <- "STANDING"
 finalDF$activity[finalDF$activity == 6] <- "LAYING"
 
 tidyDF <- ddply(finalDF, c("activity", "subject"), numcolwise(mean))
+
+write.table(tidyDF, "HAR_dataset_extracted_stats.txt", row.name=FALSE)
